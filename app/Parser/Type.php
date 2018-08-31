@@ -83,7 +83,7 @@ class Type
             ->where('status', '<>', 'deleted')
             ->get();
             
-        Post::whereIn('id', $posts->lists('id')->toArray())->update([
+        Post::whereIn('id', $posts->pluck('id')->toArray())->update([
             'status' => 'deleted'
         ]);
 
